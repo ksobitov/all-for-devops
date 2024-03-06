@@ -13,7 +13,7 @@ mkdir my_postgres_project && cd my_postgres_project
 Inside this directory, create subdirectories for PostgreSQL data, backups, pgAdmin data, and PostgreSQL configuration files:
 
 ```bash
-mkdir -p postgres-data config pgadmin-data postgres-backups
+mkdir -p postgres-data pgadmin-data postgres-backups
 ```
 
 ## Docker Compose Configuration Overview
