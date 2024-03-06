@@ -54,6 +54,18 @@ The `docker-compose.yml` file defines three services: `postgres`, `backup`, and 
 - **Environment Variables**: Store sensitive information like passwords in a `.env` file located at the root of your project directory. This file should not be committed to version control.
 - **Volume Permissions**: Ensure that the host directories mapped as volumes (`postgres-data`, `postgres-backups`, `pgadmin-data`) have appropriate permissions set to allow read/write operations by the containers.
 
+Example **.env** file
+
+```bash
+# PostgreSQL environment variables
+POSTGRES_PASSWORD=YourSecurePostgresPassword
+
+# pgAdmin environment variables
+PGADMIN_DEFAULT_EMAIL=your.email@example.com
+PGADMIN_DEFAULT_PASSWORD=YourSecurePgAdminPassword
+```
+
+
 ## Starting the Services
 
 To launch the services, navigate to the directory containing your `docker-compose.yml` and `.env` files, then run:
@@ -68,7 +80,7 @@ Once the services are running, access pgAdmin by navigating to `http://localhost
 
 ## Connecting pgAdmin to PostgreSQL
 
-Within pg
+Within pgadmin
 
 Admin, create a new server connection using the following details:
 
