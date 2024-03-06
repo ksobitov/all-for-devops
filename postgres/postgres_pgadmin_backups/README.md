@@ -64,6 +64,24 @@ POSTGRES_PASSWORD=YourSecurePostgresPassword
 PGADMIN_DEFAULT_EMAIL=your.email@example.com
 PGADMIN_DEFAULT_PASSWORD=YourSecurePgAdminPassword
 ```
+## Set Set Directory Ownership
+Change the ownership of the directories on your host that are mounted as volumes to match the **UID** and **GID** of the corresponding service inside the container. Assuming a common scenario where the PostgreSQL service runs as **UID 999** and **GID 999**, and pgAdmin might run as a different or the same user, you would set the ownership like so:
+```bash
+sudo chown -R 999:999 postgres-data postgres-backups
+sudo chown -R 5050:5050 pgadmin-data  # Assuming pgAdmin runs as 5050:5050, adjust as necessary
+
+```
+
+## Set Directory Permissions
+ Next, set more restrictive permissions on these directories to prevent unauthorized access. A common setting for directories that need to be writable by their owner (and readable by their group) is **750**, and for files, **640**:
+
+```bash
+sudo chmod -R 750 postgres-data postgres-backups pgadmin-data
+sudo find postgres-data postgres-backups pgadmin-data -type f -exec chmod 640 {} \;
+
+```
+
+This commands set directories to **750** (read, write, execute for owner; read, execute for group; no permissions for others) and files to **640** (read, write for owner; read for group; no permissions for others), which is generally a good balance between accessibility and security for production environments.
 
 
 ## Starting the Services
