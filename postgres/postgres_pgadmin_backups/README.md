@@ -2,6 +2,19 @@
 
 This guide details the setup and configuration for running PostgreSQL with automated backups and pgAdmin for database management, all within Docker containers. This setup is ideal for development, testing, and production environments with the appropriate security considerations.
 
+## Directory Structure
+
+Create a directory for your project and navigate into it:
+
+```bash
+mkdir my_postgres_project && cd my_postgres_project
+```
+
+Inside this directory, create subdirectories for PostgreSQL data, backups, pgAdmin data, and PostgreSQL configuration files:
+
+```bash
+mkdir -p postgres-data config pgadmin-data postgres-backups
+
 ## Docker Compose Configuration Overview
 
 The `docker-compose.yml` file defines three services: `postgres`, `backup`, and `pgadmin`. Below is a breakdown of the configurations for each service.
